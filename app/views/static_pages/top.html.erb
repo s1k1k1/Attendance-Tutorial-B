@@ -1,2 +1,21 @@
-<h1>StaticPages#top</h1>
-<p>Find me in app/views/static_pages/top.html.erb</p>
+<!--<h1>勤怠管理システム</h1>-->
+<!--<p>このアプリケーションでは、登録されたユーザーの勤怠情報を閲覧・登録・編集することができます。</p>-->
+
+<% provide(:title, "Top") %>
+<!--<%# %><%#= %>埋め込みRuby　Viewにてコードの重複を取り除くテクニックの１つ＝ERB-->
+<!--ERB＝Embedded Ruby＝埋め込みRuby-->
+<!--provide=与える　埋め込みRubyによりprovideメソッドを呼び出す-->
+<!--:titleは"Top"を関連付ける-->
+<!--provideメソッドを使ってタイトルのページ名部分をページ毎に変更-->
+
+    <h1>勤怠管理システム</h1>
+    <p>このアプリケーションでは、登録されたユーザーの勤怠情報を閲覧・登録・編集することができます。</p>
+    <!--↑　ここのh1とｐタグがpplication.html.erbの下記記載のyieldメソッドに挿入される。-->
+    <!--<body>-->
+    <!--  <%#= yield %>-->
+      <!--例えばstatic_pages/topにアクセスするとtop.html.erbの内容がHTMLに変換され、<%#= yield %>の位置に挿入される-->
+    <!--</body>-->
+
+<!--application.html.erb(レイアウトファイル)にて
+リファクタリング（外部から見た動作を変えずにソースコードの内部構造を整理する）-->
+<!--することでHTMLの重複した部分をDRY（＝Don't Repeat Yourself＝繰り返すべからず＝Rubyの原則）にする-->

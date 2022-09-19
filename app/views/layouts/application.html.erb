@@ -1,14 +1,27 @@
 <!DOCTYPE html>
+<!--# 使用するHTMLのバージョンをブラウザに対して宣言-->
 <html>
   <head>
-    <title>AttendanceAppB</title>
+    <title><%= full_title(yield(:title)) %></title>
+    <!--<title><%#= yield(:title) %> | AttendanceApp</title>-->
+    <!--yield＝生み出す-->
+    <!--yieldメソッドによって、テンプレート対象部分に実際のタイトルが挿入される-->
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--csrf_meta_tagsメソッドを展開するためのコード-->
+    <%= stylesheet_link_tag    'application', media: 'all',
+                               'data-turbolinks-track': 'reload' %>
+    <!--スタイルシートを展開するためのコード-->
+    <%= javascript_include_tag 'application',
+                               'data-turbolinks-track': 'reload' %>
+    <!--JavaScriptを展開するためのコード-->
   </head>
 
   <body>
     <%= yield %>
+    <!--例えばstatic_pages/topにアクセスするとtop.html.erbの内容がHTMLに変換され、その内容が<%#= yield %>の位置に挿入される-->
   </body>
 </html>
+
+<!--application.html.erb(レイアウトファイル)にて
+リファクタリング（外部から見た動作を変えずにソースコードの内部構造を整理する）-->
+<!--することでHTMLの重複した部分をDRY（＝Don't Repeat Yourself＝繰り返すべからず＝Rubyの原則）にする-->
