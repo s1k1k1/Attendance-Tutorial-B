@@ -1,0 +1,22 @@
+<!--ヘッダー用のパーシャルファイル-->
+
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Attendance App", root_path, id: "logo" %>
+     <!--Railsが標準で用意してくれているルーティングhelperメソッド。Viewで使用することで、Railsの方で自動的にHTMLのaタグを生成。-->
+        <!--基本構文　<%#= link_to "テキスト", リンク %>-->
+        <!--aタグだったらURLを全部書いたり、文字で入力していかないといけないが、link_toにすると、-->
+        <!--第一引数はボタンの名前・リンクの名前になり、第二引数にはそのリンクがどこに向かっているのか書くことができ、-->
+        <!--例えばルーターが自動的につくってくれるpost_passにすると、-->
+        <!--ルーターで定義しているURL先を実際にHTML先には表示してくれる。-->
+        <!--root_pathの定義を変えればroot_pathが使われている全てのURLを変更できるため保守性・柔軟性が高まる。-->
+        <!--ルーティングヘルパーには、root_pathとroot_urlの2つのパターンがある。-->
+        <!--ビューではpath、コントローラーなどでリダイレクトする時にはurlを使用。-->
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Top", root_path %></li>
+        <li><%= link_to "Log in", '#' %></li>
+      </ul>
+    </nav>
+  </div>
+</header>

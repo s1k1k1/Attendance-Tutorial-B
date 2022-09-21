@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   # 基本的に、Webサーバから情報を取り出す（GET）するために使用されます。）が、
   # StaticPagesコントローラーのtopアクションにルーティングされるようになる。
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  get '/signup', to: 'users#new'
 end

@@ -14,11 +14,51 @@
     <%= javascript_include_tag 'application',
                                'data-turbolinks-track': 'reload' %>
     <!--JavaScriptを展開するためのコード-->
+    <!--[if lt IE 9]>
+      <!--<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">-->
+      <!--</script>-->
+    <!--<![endif]-->
+    <!--JavaScriptのコードを利用して一部のブラウザでHTML5のサポートが不完全となってしまう可能性を回避-->
+    
+    <!--↓↓　旧式のInternet Explorerに対応するためのHTML shim。これだけでも３行使用するので、-->
+    <!--　　　パーシャル（partial）機能でrenderと呼れるRailsヘルパー呼び出すことにする。HTML shimの三行は、app/views/layouts/_shim.html.erbに移動させる-->
+    <!--app/views/layouts/_shim.html.erbはtouch app/views/layouts/_shim.html.erbで生成できる。-->
+    <!--shimとはプログラムのバージョン間の差異を埋める緩衝材のように使う薄いレイヤーみたいなもの。-->
+    
+    <!-- HTML shimがこの1行で収まる -->
+    <%= render 'layouts/shim' %>
+    <!--このコードはapp/views/layouts/_shim.html.erbというファイルを探して、その内容を評価して結果をビューに挿入します。-->
+    <!--_shim.html.erbのアンダースコアは、パーシャルで使用する命名規約であり、一目でそのファイルがパーシャルだと判断する目印-->
+    <!--パーシャルが動作するためには、それに対応するファイルとコードを記述する必要が-->
   </head>
 
   <body>
-    <%= yield %>
+    <!-- headerの内容がこの1行で収まる -->
+    <%= render 'layouts/header' %>
+    
+    <!--↓↓　headerから/headerまでの行はapp/views/layouts/_header.html.erbに移動-->
+    <!--<header class="navbar navbar-fixed-top navbar-inverse">-->
+    <!--<div class="container">-->
+    <!--    <%#= link_to "Attendance App", '#', id: "logo" %>-->
+        <!--Railsが標準で用意してくれているhelperメソッド。Viewで使用することで、Railsの方で自動的にHTMLのaタグを生成。-->
+        <!--基本構文　<%#= link_to "テキスト", リンク %>-->
+        <!--aタグだったらURLを全部書いたり、文字で入力していかないといけないが、link_toにすると、-->
+        <!--第一引数はボタンの名前・リンクの名前になり、第二引数にはそのリンクがどこに向かっているのか書くことができ、-->
+        <!--例えばルーターが自動的につくってくれるpost_passにすると、-->
+        <!--ルーターで定義しているURL先を実際にHTML先には表示してくれる。-->
+        
+        <!--<nav>-->
+        <!--  <ul class="nav navbar-nav navbar-right">-->
+        <!--    <li><%#= link_to "Top",   '#' %></li>-->
+        <!--    <li><%#= link_to "Log in", '#' %></li>-->
+        <!--  </ul>-->
+        <!--</nav>-->
+    <!--</div>-->
+    <!--</header>-->
+    <div class="container">
+    　<%= yield %>
     <!--例えばstatic_pages/topにアクセスするとtop.html.erbの内容がHTMLに変換され、その内容が<%#= yield %>の位置に挿入される-->
+ 　　</div>
   </body>
 </html>
 
