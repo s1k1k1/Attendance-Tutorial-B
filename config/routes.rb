@@ -1,6 +1,8 @@
 # ルーティングの設定とは利用者からのリクエストを表すURLから呼び出すべきコントローラとアクションを見つけ出すルールのこと。
 # URLをどのコントローラのどのアクションで処理するかを記述。
 Rails.application.routes.draw do
+  # get 'sessions/new'
+
   root 'static_pages#top'
   # rootはルートドメイン（例 https://example.com）にアクセスしたときに表示するページの指定です。
   # rootを指定しない場合は、railsのデフォルトページが表示されます。
@@ -17,6 +19,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   get '/signup', to: 'users#new'
+  
+  # ログイン機能
+  get    '/login', to: 'sessions#new'
+  post   '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  
   resources :users
   # /users/1を追加するためのコードであり、ユーザーのURLを生成するための多数のルーティングヘルパーと共に、
   # RESTfulなUsersリソースで必要となる全てのアクションも利用できるようになる。
