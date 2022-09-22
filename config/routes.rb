@@ -17,4 +17,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   get '/signup', to: 'users#new'
+  resources :users
+  # /users/1を追加するためのコードであり、ユーザーのURLを生成するための多数のルーティングヘルパーと共に、
+  # RESTfulなUsersリソースで必要となる全てのアクションも利用できるようになる。
+  # ↑　要するに色んなアクションやルーティングヘルパー（users_pathなど）やURL（/users）を使えるようにする。
+  # 但し、ファイルは自動生成されないため手動で作成する必要有。
 end

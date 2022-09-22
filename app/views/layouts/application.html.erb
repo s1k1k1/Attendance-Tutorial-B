@@ -56,8 +56,14 @@
     <!--</div>-->
     <!--</header>-->
     <div class="container">
+      <% flash.each do |message_type, msg| %>
+        <div class="alert alert-<%= message_type %>"><%= msg %></div>
+      <% end %>
     　<%= yield %>
     <!--例えばstatic_pages/topにアクセスするとtop.html.erbの内容がHTMLに変換され、その内容が<%#= yield %>の位置に挿入される-->
+ 　　 <%= debug(params) if Rails.env.development? %>
+ 　　 <!--デバッグ情報が各ページに表示されることで開発効率が向上するが本番環境ではデバッグ情報は表示するべきではないため-->
+ 　　　<!--後半にRails.env.development?と記述し、実行結果がtrueであれば開発環境のみデバッグ情報を表示される-->
  　　</div>
   </body>
 </html>

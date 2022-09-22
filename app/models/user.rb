@@ -13,8 +13,8 @@ class User < ApplicationRecord
                     #formatオプションでは引数に正規表現（Regular Expression）を指定
                     # VALID_EMAIL_REGEX＝正規表現＝値が変化することがないため定数として定義
                     #Rubyでは定数を定義する時は、大文字のスネークケースで記述する
-                                      uniqueness: true
-　has_secure_password
-　validates :password, presence: true, length: { minimum: 6 }
+                    uniqueness: true
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }
  # より安全性を高めるため、パスワードの存在性と最小文字数（6文字以上とする）の2つを設定
 end
