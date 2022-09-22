@@ -3,35 +3,26 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to "Attendance App", root_path, id: "logo" %>
-     <!--Railsが標準で用意してくれているルーティングhelperメソッド。Viewで使用することで、Railsの方で自動的にHTMLのaタグを生成。-->
-        <!--基本構文　<%#= link_to "テキスト", リンク %>-->
-        <!--aタグだったらURLを全部書いたり、文字で入力していかないといけないが、link_toにすると、-->
-        <!--第一引数はボタンの名前・リンクの名前になり、第二引数にはそのリンクがどこに向かっているのか書くことができ、-->
-        <!--例えばルーターが自動的につくってくれるpost_passにすると、-->
-        <!--ルーターで定義しているURL先を実際にHTML先には表示してくれる。-->
-        <!--root_pathの定義を変えればroot_pathが使われている全てのURLを変更できるため保守性・柔軟性が高まる。-->
-        <!--ルーティングヘルパーには、root_pathとroot_urlの2つのパターンがある。-->
-        <!--ビューではpath、コントローラーなどでリダイレクトする時にはurlを使用。-->
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Top", root_path %></li>
+        <li><%= link_to "ホーム", root_path %></li>
         <% if logged_in? %>
-          <li><%= link_to "Users", '#' %></li>
+          <li><%= link_to "全てのユーザー", users_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
+              メニュー <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Show", current_user %></li>
-              <li><%= link_to "Settings", '#' %></li>
+              <li><%= link_to "勤怠", current_user %></li>
+              <li><%= link_to "設定", edit_user_path(current_user) %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Log out", logout_path, method: :delete %>
+                <%= link_to "ログアウト", logout_path, method: :delete %>
               </li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Log in", login_path %></li>
+          <li><%= link_to "ログイン", login_path %></li>
         <% end %>
       </ul>
     </nav>

@@ -2,9 +2,7 @@
 <!--@userに対しエラーが発生しているかどうか条件式を記述-->
   <div id="error_explanation">
     <div class="alert alert-danger">
-      The form contains <%= pluralize(@user.errors.count, "error") %>.
-      <!--例えばエラーが2件発生していた場合、上記のコードはこのように置き換わる。→pluralize(2, "error")-->
-      <!--pluralize＝複数形にする-->
+      入力エラーが<%= @user.errors.count %>件ありました。
     </div>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
