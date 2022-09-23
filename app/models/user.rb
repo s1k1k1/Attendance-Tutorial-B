@@ -19,7 +19,7 @@ class User < ApplicationRecord
                     #Rubyでは定数を定義する時は、大文字のスネークケースで記述する
                     uniqueness: true
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
  # より安全性を高めるため、パスワードの存在性と最小文字数（6文字以上とする）の2つを設定
  
  # 渡された文字列のハッシュ値を返します。
