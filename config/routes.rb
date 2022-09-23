@@ -25,9 +25,14 @@ Rails.application.routes.draw do
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   
-  resources :users
+  resources :users do
   # /users/1を追加するためのコードであり、ユーザーのURLを生成するための多数のルーティングヘルパーと共に、
   # RESTfulなUsersリソースで必要となる全てのアクションも利用できるようになる。
   # ↑　要するに色んなアクションやルーティングヘルパー（users_pathなど）やURL（/users）を使えるようにする。
   # 但し、ファイルは自動生成されないため手動で作成する必要有。
+    member do
+      get 'edit_basic_info'
+      patch 'update_basic_info'
+    end
+  end
 end
